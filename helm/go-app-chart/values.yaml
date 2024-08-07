@@ -1,0 +1,39 @@
+# Default values for go-app-chart.
+# This is a YAML-formatted file.
+# Declare variables to be passed into your templates.
+
+#deployment
+replicaCount: 1
+image:
+  name: saymapatwekar/python-web-app
+  repository: nginx
+  pullPolicy: IfNotPresent
+  # Overrides the image tag whose default is the chart appVersion.
+  tag: "v1"
+
+imagePullSecrets: []
+nameOverride: ""
+fullnameOverride: ""
+
+#service
+service:
+  type: NodePort
+  port: 80
+
+#ingress
+ingress:
+  enabled: false
+  className: "nginx"
+  annotations: {}
+    # kubernetes.io/ingress.class: nginx
+    # kubernetes.io/tls-acme: "true"
+  hosts:
+    - host: sample-app.com
+      paths:
+        - path: /
+          pathType: ImplementationSpecific
+  tls: []
+  #  - secretName: chart-example-tls
+  #    hosts:
+  #      - chart-example.local
+
