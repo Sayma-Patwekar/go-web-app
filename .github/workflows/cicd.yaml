@@ -1,0 +1,35 @@
+# CICD using GitHub actions
+
+name: CI/CD
+
+# Exclude the workflow to run on changes to the helm chart
+on:
+  push:
+    branches:
+      - main
+    paths-ignore:
+      - 'helm/**'
+      - 'k8s/**'
+      - 'README.md'
+
+jobs:
+
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: checkout repo
+        uses: Sayma-Patwekar/action-checkout-repo@v1.3.5
+        with:
+          -ref: main
+
+      - name: go setup
+        uses: actions/setup-go@v5
+        with:
+          go-version: '^1.13.1' # The Go version to download (if necessary) and use.
+
+      - name: Build
+        run: go build -o go-app .
+
+      - name: test
+        run: go test ./..
