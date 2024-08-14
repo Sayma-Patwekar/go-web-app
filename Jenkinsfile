@@ -4,14 +4,13 @@ pipeline
     tools{
         go 'go-1.23.0'
     }
-    environment {
-        DOCKERHUB_CREDENTIALS = credentials('DOCKER_CREDS')
-        DOCKERHUB_CREDENTIALS_USR = 'saymapatwekar'
-        GITHUB_TOKEN = credentials('GITHUB_TOKEN')
-        GITHUB_USR = 'Sayma-Patwekar'
-        PATH_TO_GIT_REPO = 'Sayma-Patwekar/go-web-app'
-
-    }
+    // environment {
+    //     DOCKERHUB_CREDENTIALS = credentials('DOCKER_CREDS')
+    //     DOCKERHUB_CREDENTIALS_USR = 'saymapatwekar'
+    //     GITHUB_TOKEN = credentials('GITHUB_TOKEN')
+    //     GITHUB_USR = 'Sayma-Patwekar'
+    //     PATH_TO_GIT_REPO = 'Sayma-Patwekar/go-web-app'
+    // }
 
     stages{
         // stage('checkout repository'){
