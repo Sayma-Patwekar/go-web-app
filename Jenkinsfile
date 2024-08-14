@@ -14,7 +14,7 @@ pipeline
     stages{
         stage('checkout repository'){
             steps{
-                git branch: 'main', url: 'https://github.com/Sayma-Patwekar/go-web-app'
+                git branch: 'main', url: 'https://github.com/Sayma-Patwekar/go-web-app.git'
             }   
         }
 
