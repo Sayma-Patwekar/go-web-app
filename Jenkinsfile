@@ -18,24 +18,32 @@ pipeline
             }   
         }
 
-        stage('Set up go'){
+        stage('Set Up Go') {
             steps {
-                sh 'wget https://golang.org/dl/go1.22.linux-amd64.tar.gz'
-                sh 'sudo tar -C /usr/local -xzf go1.22.linux-amd64.tar.gz'
-                sh 'export PATH=$PATH:/usr/local/go/bin'
+                // Download and install Go
+                sh '''
+                wget https://golang.org/dl/go1.22.linux-amd64.tar.gz
+                sudo tar -C /usr/local -xzf go1.22.linux-amd64.tar.gz
+                '''
+                // Set up Go environment
+                sh 'export PATH=$PATH:/usr/local/go/bin && go version'
             }
         }
 
-        stage('Build'){
-            steps{
-                sh 'go build -o go-web-app'
+        stage('Build') {
+            steps {
+                // Build the Go application
+                sh 'export PATH=$PATH:/usr/local/go/bin && go build -o go-web-app'
             }
         }
 
-        stage('Code Quality test'){
+        stage('Code Quality Test') {
             steps {
-                sh 'curl -sSfL https://install.goreleaser.com/github.com/golangci/golangci-lint.sh | sh -s v1.56.2'
-                sh './bin/golangci-lint run'
+                // Install and run golangci-lint
+                sh '''
+                curl -sSfL https://raw.githubusercontent.com/golangci/golangci-lint/master/install.sh | sh -s v1.56.2
+                ./bin/golangci-lint run
+                '''
             }
         }
 
