@@ -1,7 +1,4 @@
-# Default values for go-app-chart.
-# This is a YAML-formatted file.
-# Declare variables to be passed into your templates.
-
+app_name : go-app
 #deployment
 replicaCount: 1
 image:
