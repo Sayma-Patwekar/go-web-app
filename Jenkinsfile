@@ -31,13 +31,13 @@ pipeline{
                 }
             }
         }
-        stage('Checkout K8S manifest SCM'){
-            steps {
-                git credentialsId: 'GITHUB_CREDS', 
-                url: 'https://github.com/Sayma-Patwekar/go-web-app.git',
-                branch: 'main'
-            }
-        }
+        // stage('Checkout K8S manifest SCM'){
+        //     steps {
+        //         git credentialsId: 'GITHUB_CREDS', 
+        //         url: 'https://github.com/Sayma-Patwekar/go-web-app.git',
+        //         branch: 'main'
+        //     }
+        // }
         stage('update tag in helm'){
             steps{
                 withCredentials([usernamePassword(credentialsId: 'GITHUB_CREDS', passwordVariable: 'gitpassword', usernameVariable: 'gitusername')]) {
