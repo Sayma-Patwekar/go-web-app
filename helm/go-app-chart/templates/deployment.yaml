@@ -3,16 +3,16 @@ kind: Deployment
 metadata:
   name: go-app-dep
   labels:
-    app: go-app
+    app: {{ .Values.app_name }}
 spec:
   replicas: 1
   selector:
     matchLabels:
-      app: go-app
+      app: {{ .Values.app_name }}
   template:
     metadata:
       labels:
-        app: go-app
+        app: {{ .Values.app_name }}
     spec:
       containers:
       - name: go-web-app

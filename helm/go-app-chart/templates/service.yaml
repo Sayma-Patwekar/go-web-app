@@ -5,7 +5,7 @@ metadata:
 spec:
   type: {{ .Values.service.type }}
   selector:
-    app: go-app
+    app: {{ .Values.app_name }}
   ports:
     #svc port
     - port: {{ .Values.service.port }} 
