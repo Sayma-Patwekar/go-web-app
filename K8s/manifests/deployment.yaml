@@ -16,6 +16,6 @@ spec:
     spec:
       containers:
       - name: go-web-app
-        image: saymapatwekar/python-web-app:v1
+        image: saymapatwekar/go-web-app:v1
         ports:
         - containerPort: 8000
